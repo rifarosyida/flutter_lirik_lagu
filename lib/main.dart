@@ -1,63 +1,28 @@
 import 'package:flutter/material.dart';
+void main() => runApp(MyApp());
 
-void main() => runApp(App());
-
-GlobalKey<ScaffoldState> scaffoldState = GlobalKey();
-
-class App extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Color(0xFF7D9AFF),
-        accentColor: Color(0xFF7D9AFF),
-      ),
-      home: HomeScreen(),
-    );
-  }
-}
+      title: 'First App',
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('Aplikasi Flutter Lirik Lagu'),
+            backgroundColor: Colors.deepOrange,
+          ),
+          body:  Column(
+              children: <Widget>[
+                Image.network('https://img.okezone.com/content/2020/11/10/33/2307536/dekat-dengan-denny-caknan-happy-asmara-dia-terangi-sisi-gelapku-JOEFwuLjOm.jpg'),
+                Text(
+                  'Kartonyono Medot Janji',
+                  style: TextStyle(fontSize: 24, fontFamily: "Serif", height: 2.0),
+                ),
+                Text('oleh Denny Caknan\n Kok kebangetan men\n Sambat blas ra ono perhatian\n Jelas ku butuh atimu, ku butuh awakmu\n Kok kebangetan men\n Loro ati iki\n Tak mbarno karo tak nggo latihan\n')
+            ]
+          )
 
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldState,
-      body: Center(
-        child: Text('Hello world'),
       ),
     );
   }
-}
-Widget _buildWidgetAlbumCover(MediaQueryData mediaQuery) {
-  return Container(
-    width: double.infinity,
-    height: mediaQuery.size.height / 1.8,
-    decoration: BoxDecoration(
-      shape: BoxShape.rectangle,
-      borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(48.0),
-      ),
-      image: DecorationImage(
-        image: AssetImage('assets/denny.jpg'),
-        fit: BoxFit.cover,
-      ),
-    ),
-  );
-}
-Widget build(BuildContext context) {
-  var mediaQuery = MediaQuery.of(context);
-
-  return Scaffold(
-    key: scaffoldState,
-    body: Stack(
-      children: <Widget>[
-        _buildWidgetAlbumCover(mediaQuery),
-      ],
-    ),
-  );
 }
